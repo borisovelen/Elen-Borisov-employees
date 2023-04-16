@@ -11,8 +11,7 @@ public class CSV {
     public static ArrayList<Employees> empList = new ArrayList<>();
     public static void loader(String filename){
         try{
-            File file = new File(filename);
-            FileReader fr = new FileReader(file);
+            FileReader fr = new FileReader(filename);
             BufferedReader br = new BufferedReader(fr);
             String line = "";
             String[] lineArr;
@@ -24,6 +23,8 @@ public class CSV {
                 emp = new Employees(Integer.parseInt(lineArr[0]),Integer.parseInt(lineArr[1]), LocalDate.parse(lineArr[2]), LocalDate.parse(lineArr[3]));
                 empList.add(emp);
             }
+            br.close();
+            fr.close();
         }catch(DateTimeParseException e){
             System.out.println("Date format is not correct. You must use YYYY-MM-DD format or NULL!");
         }
